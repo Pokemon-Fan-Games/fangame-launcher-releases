@@ -8,6 +8,7 @@
 
 ### Qué datos usa
 - **Partidas guardadas de tus juegos.** Si conectas Google Drive, el launcher copia esas partidas a tu cuenta de Google Drive y las restaura en otros equipos.
+- **Contador de descargas.** Cuando una descarga o actualización termina y su integridad se verifica, el launcher envía a nuestro servidor un evento con: un identificador aleatorio del evento, el juego, la versión, la plataforma de la build, el sistema operativo del launcher, la versión del launcher, el hash SHA-256 del archivo y si es descarga o actualización. El servidor añade la fecha. **No se envían ni guardan cuenta, nombre, dispositivo, hardware, dirección IP ni user-agent** en ese registro, y el identificador no se deriva de ti ni de tu equipo. Se usa solo para mostrar cuántas veces se descargó cada juego. Para limitar abusos, el servidor usa temporalmente tu dirección IP en una caché volátil (como un código hash con sal que expira en 60 segundos); no se guarda en la base de datos. La infraestructura de alojamiento puede conservar registros técnicos de acceso según su propia configuración.
 
 ### Acceso a Google
 - La app solicita únicamente el permiso `https://www.googleapis.com/auth/drive.appdata`. Da acceso a una carpeta privada de la aplicación en tu Drive. **No puede ver ni modificar tus demás archivos de Drive.**
@@ -28,6 +29,7 @@ Para consultas sobre privacidad: fangameslauncher@gmail.com
 
 ### Data it uses
 - **Your games' save files.** If you connect Google Drive, the launcher copies those saves to your Google Drive account and restores them on other devices.
+- **Download counter.** When a download or update finishes and its integrity is verified, the launcher sends our server an event with: a random event identifier, the game, the version, the build platform, the launcher's operating system, the launcher version, the file's SHA-256 hash and whether it is a download or an update. The server adds the date. **No account, name, device, hardware, IP address or user-agent is sent or stored** in that record, and the identifier is not derived from you or your device. It is used only to show how many times each game was downloaded. To limit abuse, the server briefly uses your IP address in a volatile cache (as a salted hash that expires after 60 seconds); it is not stored in the database. The hosting infrastructure may keep technical access logs according to its own configuration.
 
 ### Google access
 - The app requests only the `https://www.googleapis.com/auth/drive.appdata` scope. It grants access to a private application folder in your Drive. **It cannot see or modify your other Drive files.**
