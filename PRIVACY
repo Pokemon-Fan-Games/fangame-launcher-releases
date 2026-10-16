@@ -1,0 +1,43 @@
+# Política de privacidad / Privacy Policy
+
+*Última actualización / Last updated: 2026-10-16*
+
+## Español
+
+**Fangame Launcher** es una aplicación de escritorio para descargar y jugar fangames.
+
+### Qué datos usa
+- **Partidas guardadas de tus juegos.** Si conectas Google Drive, el launcher copia esas partidas a tu cuenta de Google Drive y las restaura en otros equipos.
+
+### Acceso a Google
+- La app solicita únicamente el permiso `https://www.googleapis.com/auth/drive.appdata`. Da acceso a una carpeta privada de la aplicación en tu Drive. **No puede ver ni modificar tus demás archivos de Drive.**
+- Los datos viajan directamente entre tu equipo y Google Drive. No pasan por servidores del proyecto y no los recibimos, almacenamos ni compartimos.
+- El token de acceso se guarda en el almacén seguro de credenciales de tu sistema operativo.
+- El uso de la información recibida de las APIs de Google cumple la [Política de datos de usuario de los servicios de API de Google](https://developers.google.com/terms/api-services-user-data-policy), incluidos los requisitos de uso limitado.
+
+### Control
+- Puedes desconectar tu cuenta en cualquier momento desde **Configuración** en el launcher. Esto revoca el acceso y borra el token local.
+- También puedes revocar el acceso en <https://myaccount.google.com/permissions> y borrar los datos de la app desde la configuración de Google Drive.
+
+### Contacto
+Para consultas sobre privacidad: fangameslauncher@gmail.com
+
+## English
+
+**Fangame Launcher** is a desktop application for downloading and playing fan games.
+
+### Data it uses
+- **Your games' save files.** If you connect Google Drive, the launcher copies those saves to your Google Drive account and restores them on other devices.
+
+### Google access
+- The app requests only the `https://www.googleapis.com/auth/drive.appdata` scope. It grants access to a private application folder in your Drive. **It cannot see or modify your other Drive files.**
+- Data travels directly between your device and Google Drive. It does not pass through any project server, and we do not receive, store or share it.
+- The access token is kept in your operating system's secure credential store.
+- Use of information received from Google APIs adheres to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
+
+### Control
+- You can disconnect your account at any time from **Settings** in the launcher. This revokes access and deletes the local token.
+- You can also revoke access at <https://myaccount.google.com/permissions> and delete the app's data from Google Drive settings.
+
+### Contact
+For privacy questions: fangameslauncher@gmail.com
