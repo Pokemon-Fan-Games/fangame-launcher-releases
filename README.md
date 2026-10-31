@@ -17,6 +17,12 @@ En **Steam Deck**, ejecútalo desde el modo Escritorio.
 
 - **Ubuntu/Debian:** puedes instalar el archivo `.deb` desde el centro de software o con `sudo apt install ./ARCHIVO.deb`.
 - **Windows:** descarga y ejecuta el instalador `.exe`.
-- **macOS:** descarga el `.dmg` correspondiente a Intel o Apple Silicon y mueve la app a Aplicaciones.
+- **macOS:** descarga el `.dmg` correspondiente a Intel o Apple Silicon y mueve la app a Aplicaciones. Si macOS bloquea la apertura, abre Terminal y ejecuta:
+
+  ```sh
+  sudo xattr -rd com.apple.quarantine "/Applications/Fangame Launcher.app"
+  chmod -R +x "/Applications/Fangame Launcher.app"
+  codesign --force --deep --sign - "/Applications/Fangame Launcher.app"
+  ```
 
 Descarga únicamente los instaladores adjuntos a las Releases oficiales de este repositorio.

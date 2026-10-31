@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n-title="meta.title">Fangame Launcher: instala, actualiza y juega fangames</title>
+  <meta name="description" data-i18n-content="meta.description" content="Launcher de escritorio para descubrir, instalar, actualizar y ejecutar fangames en Windows, Linux y macOS, con copias de tus partidas.">
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Reserva la traducción hasta que i18n.js la aplique: evita el destello de idioma.
+    document.documentElement.setAttribute("data-i18n-pending", "1");
+    setTimeout(function () {
+      if (!window.__fangameI18nApplied) document.documentElement.removeAttribute("data-i18n-pending");
+    }, 3000);
+  </script>
+  <script src="locales/en.js"></script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="nav.skip">Saltar al contenido</a>
+<header class="nav">
+  <a class="brand" href="#"><img src="assets/icon.png" alt="" width="28" height="28">Fangame Launcher</a>
+  <div class="nav-end">
+    <nav aria-label="Principal" data-i18n-aria="nav.main">
+      <a href="#funciones" data-i18n="nav.features">Funciones</a>
+      <a href="#capturas" data-i18n="nav.screenshots">Capturas</a>
+      <a href="#makers" data-i18n="nav.makers">Makers</a>
+      <a href="#descargar" data-i18n="nav.download">Descargar</a>
+      <a href="#faq" data-i18n="nav.faq">Preguntas</a>
+    </nav>
+    <div class="lang-switch" role="group" data-lang-switch data-i18n-aria="lang.group" aria-label="Idioma">
+      <button type="button" data-lang="es" aria-current="true">ES</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <p class="eyebrow" data-i18n="hero.eyebrow">Para jugadores y makers de fangames</p>
+    <h1 data-i18n="hero.title">Todos tus fangames en un solo lugar.</h1>
+    <p class="lead" data-i18n="hero.lead">Descubre fangames, instala sus versiones y organiza tu biblioteca. Gestiona las actualizaciones y las copias de partidas desde el launcher.</p>
+    <div class="actions">
+      <span class="btn soon" data-i18n="common.soon">Próximamente</span>
+      <a class="btn outline" href="#funciones" data-i18n="hero.ctaSecondary">Ver funciones</a>
+    </div>
+    <p class="mute" id="cta-note" data-i18n="hero.platforms">Próximamente para Windows, Linux y macOS.</p>
+    <figure class="screen hero-screen">
+      <a href="assets/screenshots/biblioteca.png" aria-label="Ampliar captura de la biblioteca" data-i18n-aria="hero.imageLink">
+        <img class="window-capture" src="assets/screenshots/biblioteca.png" alt="Biblioteca de Fangame Launcher con juegos instalados, favoritos y un juego externo" data-i18n-alt="hero.imageAlt" width="2557" height="1402" fetchpriority="high">
+      </a>
+      <figcaption data-i18n="hero.caption">Tu biblioteca: juegos instalados, favoritos y juegos externos en una misma vista.</figcaption>
+    </figure>
+  </section>
+
+  <section id="funciones">
+    <p class="eyebrow" data-i18n="features.eyebrow">Funciones</p>
+    <h2 data-i18n="features.title">Menos carpetas, más jugar.</h2>
+    <div class="grid">
+      <article class="card"><h3 data-i18n="features.find.title">Encuentra tu próximo juego</h3><p data-i18n="features.find.body">Busca por nombre, con o sin acentos, y combina filtros por creador, temática, etiqueta y completo o incompleto. Consulta la descripción y amplía las capturas del maker sin salir de la app.</p></article>
+      <article class="card"><h3 data-i18n="features.updates.title">Instalación y actualizaciones</h3><p data-i18n="features.updates.body">Descargas verificadas con SHA-256 y versiones en carpetas separadas. Si activas las actualizaciones automáticas, solo se instalan las que cumplen las condiciones de compatibilidad de partidas e idioma.</p></article>
+      <article class="card"><h3 data-i18n="features.saves.title">Copias de partidas</h3><p data-i18n="features.saves.body">Abre la carpeta de partidas, consulta y restaura copias, o sincroniza con tu Google Drive de forma opcional. La cobertura depende de la ubicación declarada por el maker y del motor usado para ejecutar el juego.</p></article>
+      <article class="card"><h3 data-i18n="features.offline.title">Tu biblioteca, también sin red</h3><p data-i18n="features.offline.body">Accede a los juegos públicos instalados aunque falle el catálogo. Añade juegos externos de tu equipo y personaliza las portadas de tu biblioteca.</p></article>
+      <article class="card"><h3 data-i18n="features.run.title">Opciones de ejecución</h3><p data-i18n="features.run.body">Usa las versiones nativas disponibles. En Linux, los juegos de Windows compatibles pueden ejecutarse con Proton-GE; en macOS, con Wine gestionado por el launcher. La compatibilidad depende de cada juego.</p></article>
+      <article class="card"><h3 data-i18n="features.news.title">Novedades dentro de la app</h3><p data-i18n="features.news.body">Consulta las novedades del launcher desde Configuración y las notas que el maker incluya al actualizar un juego. Refresca el catálogo para ver nuevas publicaciones sin reiniciar.</p></article>
+    </div>
+  </section>
+
+  <section id="capturas">
+    <p class="eyebrow" data-i18n="screens.eyebrow">Capturas de la aplicación</p>
+    <h2 data-i18n="screens.title">Del catálogo a tu biblioteca.</h2>
+    <p data-i18n="screens.lead">Capturas reales del launcher. Selecciona una imagen para verla a tamaño original.</p>
+    <div class="screens">
+      <figure class="screen">
+        <a href="assets/screenshots/catalogo.png" aria-label="Ampliar captura del catálogo" data-i18n-aria="screens.catalog.link">
+          <img class="window-capture" src="assets/screenshots/catalogo.png" alt="Catálogo con búsqueda, ordenación y filtros por estado, etiqueta, idioma, creador e instalación" data-i18n-alt="screens.catalog.alt" width="2557" height="1402" loading="lazy" decoding="async">
+        </a>
+        <figcaption><h3 data-i18n="screens.catalog.title">Catálogo</h3><p data-i18n="screens.catalog.body">Busca, ordena y filtra los juegos antes de instalarlos.</p></figcaption>
+      </figure>
+      <figure class="screen">
+        <a href="assets/screenshots/ficha.png" aria-label="Ampliar captura de la ficha de juego" data-i18n-aria="screens.details.link">
+          <img class="window-capture" src="assets/screenshots/ficha.png" alt="Ficha de Pokémon World Frontier con autoría, versión, descripción, puntuaciones y capturas del juego" data-i18n-alt="screens.details.alt" width="2557" height="1402" loading="lazy" decoding="async">
+        </a>
+        <figcaption><h3 data-i18n="screens.details.title">Detalles del juego</h3><p data-i18n="screens.details.body">Consulta la descripción, la versión y las capturas compartidas por el maker.</p></figcaption>
+      </figure>
+      <figure class="screen">
+        <a href="assets/screenshots/configuracion.png" aria-label="Ampliar captura de la configuración" data-i18n-aria="screens.settings.link">
+          <img class="window-capture" src="assets/screenshots/configuracion.png" alt="Configuración del launcher con novedades, cuenta opcional, idioma, color de acento, carpeta de juegos y Cloud Saves" data-i18n-alt="screens.settings.alt" width="2557" height="1402" loading="lazy" decoding="async">
+        </a>
+        <figcaption><h3 data-i18n="screens.settings.title">Configuración</h3><p data-i18n="screens.settings.body">Elige tus preferencias y gestiona las opciones de cuenta y sincronización.</p></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="makers">
+    <div class="split">
+      <div class="side">
+        <p class="eyebrow" data-i18n="makers.eyebrow">Para makers</p>
+        <h2 data-i18n="makers.title">Publica tu fangame.</h2>
+        <p class="lead left" data-i18n="makers.lead">Gestiona tu juego y sus versiones desde el portal de makers. Programa una publicación, invita a testers a betas privadas y consulta las descargas y actualizaciones por separado, con desglose por versión y sistema.</p>
+        <span class="btn soon" data-i18n="common.soon">Próximamente</span>
+      </div>
+      <ol class="steps">
+        <li><h3 data-i18n="makers.account.title">Crea tu cuenta</h3><p data-i18n="makers.account.body">Regístrate en el portal y verifica tu correo.</p></li>
+        <li><h3 data-i18n="makers.add.title">Añade tu juego</h3><p data-i18n="makers.add.body">Título, descripción, autoría, idiomas, etiquetas, portada y hasta 6 capturas.</p></li>
+        <li><h3 data-i18n="makers.upload.title">Envía una versión</h3><p data-i18n="makers.upload.body">Aloja el ZIP de tu build donde prefieras (hasta 4 GB) y pega el enlace por sistema. Indica dónde guarda las partidas tu juego para que el launcher las copie antes de actualizar.</p></li>
+        <li><h3 data-i18n="makers.review.title">Revisión</h3><p data-i18n="makers.review.body">Se valida el ZIP y se analiza con antivirus. Un administrador prueba la build y la aprueba.</p></li>
+        <li><h3 data-i18n="makers.publish.title">Publicación</h3><p data-i18n="makers.publish.body">La versión aparece cuando está aprobada y ha llegado la fecha que elegiste. Sin fecha programada, se publica al aprobarse. Las betas privadas se comparten con testers concretos.</p></li>
+      </ol>
+    </div>
+    <div class="screens" aria-label="Capturas del portal de makers" data-i18n-aria="makers.screens">
+      <figure class="screen">
+        <a href="assets/screenshots/makers-publicacion.png" aria-label="Ampliar captura del formulario de publicación" data-i18n-aria="makers.form.link">
+          <img src="assets/screenshots/makers-publicacion.png" alt="Formulario Nuevo juego del portal de makers con título, descripción y autoría pública" data-i18n-alt="makers.form.alt" width="1440" height="1000" loading="lazy" decoding="async">
+        </a>
+        <figcaption><h3 data-i18n="makers.form.title">Prepara la ficha de tu juego</h3><p data-i18n="makers.form.body">Escribe la presentación y consulta la vista previa de la descripción.</p></figcaption>
+      </figure>
+      <figure class="screen">
+        <a href="assets/screenshots/makers-imagenes.png" aria-label="Ampliar captura de la carga de imágenes" data-i18n-aria="makers.images.link">
+          <img src="assets/screenshots/makers-imagenes.png" alt="Formulario del portal con opciones para mantener una demo disponible y añadir portada y capturas" data-i18n-alt="makers.images.alt" width="1440" height="1000" loading="lazy" decoding="async">
+        </a>
+        <figcaption><h3 data-i18n="makers.images.title">Portada y capturas</h3><p data-i18n="makers.images.body">Añade una portada y hasta seis capturas, con los límites de formato y tamaño indicados en el portal.</p></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="descargar">
+    <p class="eyebrow" data-i18n="download.eyebrow">Descargar</p>
+    <h2 data-i18n="download.title">Próximamente.</h2>
+    <p class="mute" data-i18n="download.soon">Las descargas para Windows, Linux y macOS estarán disponibles muy pronto.</p>
+    <div class="grid dl">
+      <article class="card"><h3>Windows</h3><p class="platform-arch">x86_64</p><div class="btns"><span class="btn soon" data-i18n="common.soon">Próximamente</span></div></article>
+      <article class="card"><h3>Linux</h3><p class="platform-arch">x86_64 · Steam Deck</p><div class="btns"><span class="btn soon" data-i18n="common.soon">Próximamente</span></div></article>
+      <article class="card"><h3>macOS</h3><p class="platform-arch">Intel · Apple Silicon</p><div class="btns"><span class="btn soon" data-i18n="common.soon">Próximamente</span></div></article>
+    </div>
+  </section>
+
+  <section id="faq">
+    <p class="eyebrow" data-i18n="faq.eyebrow">Preguntas</p>
+    <h2 data-i18n="faq.title">Preguntas frecuentes</h2>
+    <details><summary data-i18n="faq.free.summary">¿Es gratis?</summary><p data-i18n="faq.free.body">Sí. Descargar y usar el launcher es gratis para los jugadores. Para los makers, subir y publicar sus juegos también es gratis.</p></details>
+    <details><summary data-i18n="faq.saves.summary">¿Las copias funcionan con todos los juegos?</summary><p data-i18n="faq.saves.body">Dependen de la ubicación de partidas declarada por el maker y de la compatibilidad del motor. En macOS, el launcher utiliza su propio Wine gestionado para ejecutar los juegos de Windows compatibles. Conserva una copia manual antes de cambiar de motor o instalar una versión incompatible.</p></details>
+    <details><summary data-i18n="faq.uninstall.summary">¿Qué pasa al desinstalar?</summary><p data-i18n="faq.uninstall.body">El launcher elimina la instalación que gestiona. Las partidas externas, los prefijos de compatibilidad y algunas carpetas antiguas pueden conservarse y requerir limpieza manual.</p></details>
+    <details><summary data-i18n="faq.data.summary">¿Qué datos se envían?</summary><p><span data-i18n="faq.data.bodyBefore">El catálogo, las descargas y las funciones opcionales, como la cuenta de jugador o la sincronización con tu Google Drive, requieren comunicarse con sus servicios. Consulta qué datos utiliza cada función en la </span><a href="privacy.html" data-lang-link="privacy.html" data-i18n="faq.data.bodyLink">política de privacidad</a>.</p></details>
+    <details><summary data-i18n="faq.publish.summary">¿Cómo publico mi juego?</summary><p data-i18n="faq.publish.body">El portal de makers abrirá próximamente. Vuelve pronto para publicar tu build.</p></details>
+  </section>
+</main>
+
+<footer>
+  <span>© Fangame Launcher</span>
+  <a href="https://github.com/Pokemon-Fan-Games/fangame-launcher-releases">GitHub</a>
+  <a href="privacy.html" data-lang-link="privacy.html" data-i18n="footer.privacy">Privacidad</a>
+</footer>
+<dialog id="image-viewer" aria-label="Vista ampliada de la captura" data-i18n-aria="viewer.label">
+  <button id="preview-close" class="btn" type="button" autofocus data-i18n="viewer.close">Cerrar</button>
+  <img id="preview-image" src="assets/screenshots/biblioteca.png" alt="">
+</dialog>
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

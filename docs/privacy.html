@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n-title="privacy.title">Política de privacidad · Fangame Launcher</title>
+  <meta name="description" data-i18n-content="meta.description" content="Política de privacidad de Fangame Launcher: qué datos usa la aplicación y cómo controlarlos.">
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Reserva la traducción hasta que i18n.js la aplique: evita el destello de idioma.
+    document.documentElement.setAttribute("data-i18n-pending", "1");
+    setTimeout(function () {
+      if (!window.__fangameI18nApplied) document.documentElement.removeAttribute("data-i18n-pending");
+    }, 3000);
+  </script>
+  <script src="locales/en.js"></script>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="index.html"><img src="assets/icon.png" alt="" width="28" height="28">Fangame Launcher</a>
+  <div class="nav-end">
+    <nav aria-label="Principal" data-i18n-aria="nav.main">
+      <a href="index.html" data-lang-link="index.html" data-i18n="privacy.back">Volver a la página de inicio</a>
+    </nav>
+    <div class="lang-switch" role="group" data-lang-switch data-i18n-aria="lang.group" aria-label="Idioma">
+      <button type="button" data-lang="es" aria-current="true">ES</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="prose-page">
+  <section>
+    <p class="eyebrow" data-i18n="privacy.eyebrow">Privacidad</p>
+    <h1 data-i18n="privacy.heading">Política de privacidad</h1>
+    <p class="mute" data-i18n="privacy.updated">Última actualización: 2026-10-16</p>
+    <p class="lead left" data-i18n="privacy.intro">Fangame Launcher es una aplicación de escritorio para descargar y jugar fangames.</p>
+
+    <h2 data-i18n="privacy.data.title">Qué datos usa</h2>
+    <ul>
+      <li data-i18n="privacy.data.saves"><strong>Partidas guardadas de tus juegos.</strong> Si conectas Google Drive, el launcher copia esas partidas a tu cuenta de Google Drive y las restaura en otros equipos.</li>
+      <li data-i18n="privacy.data.counter"><strong>Contador de descargas.</strong> Cuando una descarga o actualización termina y su integridad se verifica, el launcher envía a nuestro servidor un evento con: un identificador aleatorio del evento, el juego, la versión, la plataforma de la build, el sistema operativo del launcher, la versión del launcher, el hash SHA-256 del archivo y si es descarga o actualización. El servidor añade la fecha. <strong>No se envían ni guardan cuenta, nombre, dispositivo, hardware, dirección IP ni user-agent</strong> en ese registro, y el identificador no se deriva de ti ni de tu equipo. Se usa solo para mostrar cuántas veces se descargó cada juego. Para limitar abusos, el servidor usa temporalmente tu dirección IP en una caché volátil (como un código hash con sal que expira en 60 segundos); no se guarda en la base de datos. La infraestructura de alojamiento puede conservar registros técnicos de acceso según su propia configuración.</li>
+    </ul>
+
+    <h2 data-i18n="privacy.google.title">Acceso a Google</h2>
+    <ul>
+      <li data-i18n="privacy.google.scope">La app solicita únicamente el permiso <code>https://www.googleapis.com/auth/drive.appdata</code>. Da acceso a una carpeta privada de la aplicación en tu Drive. <strong>No puede ver ni modificar tus demás archivos de Drive.</strong></li>
+      <li data-i18n="privacy.google.flow">Los datos viajan directamente entre tu equipo y Google Drive. No pasan por servidores del proyecto y no los recibimos, almacenamos ni compartimos.</li>
+      <li data-i18n="privacy.google.token">El token de acceso se guarda en el almacén seguro de credenciales de tu sistema operativo.</li>
+      <li data-i18n="privacy.google.policy">El uso de la información recibida de las APIs de Google cumple la <a href="https://developers.google.com/terms/api-services-user-data-policy">Política de datos de usuario de los servicios de API de Google</a>, incluidos los requisitos de uso limitado.</li>
+    </ul>
+
+    <h2 data-i18n="privacy.control.title">Control</h2>
+    <ul>
+      <li data-i18n="privacy.control.app">Puedes desconectar tu cuenta en cualquier momento desde <strong>Configuración</strong> en el launcher. Esto revoca el acceso y borra el token local.</li>
+      <li data-i18n="privacy.control.revoke">También puedes revocar el acceso en <a href="https://myaccount.google.com/permissions">https://myaccount.google.com/permissions</a> y borrar los datos de la app desde la configuración de Google Drive.</li>
+    </ul>
+
+    <h2 data-i18n="privacy.contactTitle">Contacto</h2>
+    <p data-i18n="privacy.contact">Para consultas sobre privacidad: fangameslauncher@gmail.com</p>
+  </section>
+</main>
+
+<footer>
+  <span>© Fangame Launcher</span>
+  <a href="https://github.com/Pokemon-Fan-Games/fangame-launcher-releases">GitHub</a>
+  <a href="index.html" data-lang-link="index.html" data-i18n="footer.privacy">Privacidad</a>
+</footer>
+<script src="i18n.js"></script>
+</body>
+</html>
