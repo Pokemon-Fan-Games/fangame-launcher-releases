@@ -25,9 +25,11 @@ test('app and maker screenshots have accessible full-size links and local PNG as
 
 test('copy describes save limitations and current library features', () => {
   assert.doesNotMatch(html, /sin perder tus partidas|sin dejar restos|se actualiza sola/);
-  for (const text of ['juegos externos', 'Proton', 'Wine', 'compatibilidad', 'Novedades']) {
+  for (const text of ['Proton', 'Wine', 'compatibilidad', 'Novedades']) {
     assert.ok(html.includes(text), `Missing current information: ${text}`);
   }
+  assert.doesNotMatch(html, /juegos externos|juego externo/i);
+  assert.doesNotMatch(enDictionary, /external games|external game/i);
 });
 
 test('FAQ explicitly includes free maker publishing', () => {
