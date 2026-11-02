@@ -3,6 +3,14 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 const html = await readFile(new URL('../docs/index.html', import.meta.url), 'utf8');
+const css = await readFile(new URL('../docs/style.css', import.meta.url), 'utf8');
+
+test('gallery thumbnails share a frame and blend empty space into the page', () => {
+  assert.match(css, /\.screens \.screen a\s*\{[^}]*aspect-ratio:\s*4\s*\/\s*3/s);
+  assert.match(css, /\.screens \.screen img\s*\{[^}]*object-fit:\s*contain/s);
+  assert.doesNotMatch(css, /\.screens \.screen a\s*\{[^}]*background:/s);
+  assert.match(css, /\.screens\s*\{[^}]*min\(100%,300px\)/s);
+});
 
 test('app and maker screenshots have accessible full-size links and local PNG assets', async () => {
   assert.ok(html.includes('href="#capturas"'));
