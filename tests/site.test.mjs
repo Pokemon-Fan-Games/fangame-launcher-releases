@@ -72,6 +72,14 @@ test('las traducciones inglesas no están vacías', () => {
 const privacy = await readFile(new URL('../docs/privacy.html', import.meta.url), 'utf8');
 const privacyPolicy = await readFile(new URL('../PRIVACY', import.meta.url), 'utf8');
 
+test('public privacy policies disclose YouTube preload timing in Spanish and English', () => {
+  assert.match(privacy, /data-i18n="privacy\.video\.title"/);
+  assert.match(privacy, /data-i18n="privacy\.video\.body"/);
+  assert.match(privacyPolicy, /### V\u00eddeos y servicios externos[\s\S]*?al pasar el cursor sobre el control de reproducci\u00f3n[\s\S]*?enfocarlo con el teclado/);
+  assert.match(privacyPolicy, /### Videos and external services[\s\S]*?hovering over or keyboard-focusing/);
+  assert.match(enDictionary, /"privacy\.video\.body":.*hovering over or keyboard-focusing/);
+});
+
 test('la página de privacidad replica el documento del repositorio', () => {
   const plain = text => text
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
