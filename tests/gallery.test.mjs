@@ -7,14 +7,19 @@ const session = `fangame-gallery-${process.pid}`;
 const browser = (...args) => run('agent-browser', ['--session', session, ...args]);
 const base = process.env.SITE_URL || 'http://127.0.0.1:8768/';
 const site = `${base}?lang=es`;
+// Tall captures can have their centre outside the viewport; centre the link so the click lands on it.
+const clickScreen = async (selector) => {
+  await browser('eval', `document.querySelector('${selector}').scrollIntoView({ block: 'center', behavior: 'instant' })`);
+  await browser('click', selector);
+};
 
 test('screenshots close with the button, Escape and backdrop without leaving the page', async () => {
   try {
     await browser('open', site);
     await browser('wait', '--load', 'networkidle');
     await browser('set', 'viewport', '1440', '1000');
-    for (const name of ['biblioteca', 'catalogo', 'ficha', 'configuracion', 'makers-publicacion', 'makers-imagenes']) {
-      await browser('click', `.screen a[href="assets/screenshots/${name}.png"]`);
+    for (const name of ['biblioteca', 'catalogo', 'ficha', 'configuracion', 'makers-publicacion', 'makers-igdb', 'makers-imagenes']) {
+      await clickScreen(`.screen a[href="assets/screenshots/${name}.png"]`);
       await browser('eval', `if(!document.querySelector('dialog[open] img[src="assets/screenshots/${name}.png"]'))throw Error('Screenshot did not open in a dialog')`);
       await browser('wait', '--fn', "document.querySelector('dialog[open] img')?.complete && document.querySelector('dialog[open] img')?.naturalWidth > 0");
       await browser('eval', "if(document.activeElement?.textContent.trim()!=='Cerrar')throw Error('Close button did not receive focus')");
@@ -43,7 +48,7 @@ test('native window captures hide their bottom edge, but portal captures are not
     await browser('open', site);
     await browser('wait', '--load', 'networkidle');
     for (const name of ['biblioteca', 'makers-publicacion']) {
-      await browser('click', `.screen a[href="assets/screenshots/${name}.png"]`);
+      await clickScreen(`.screen a[href="assets/screenshots/${name}.png"]`);
       await browser('eval', `if((getComputedStyle(document.getElementById('preview-image')).clipPath !== 'none') !== ${name === 'biblioteca'})throw Error('Incorrect screenshot edge treatment')`);
       await browser('click', '#preview-close');
     }
