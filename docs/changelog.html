@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n-title="changelog.title">Novedades · Fangame Launcher</title>
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="locales/en.js"></script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="nav.skip">Saltar al contenido</a>
+<header class="nav">
+  <a class="brand" href="index.html" data-lang-link="index.html"><img src="assets/icon.png" alt="" width="28" height="28">Fangame Launcher</a>
+  <div class="nav-end">
+    <nav aria-label="Principal" data-i18n-aria="nav.main">
+      <a href="index.html#funciones" data-i18n="nav.features">Funciones</a>
+      <a href="index.html#capturas" data-i18n="nav.screenshots">Capturas</a>
+      <a href="index.html#makers" data-i18n="nav.makers">Makers</a>
+      <a href="index.html#descargar" data-i18n="nav.download">Descargar</a>
+      <a href="index.html#faq" data-i18n="nav.faq">Preguntas</a>
+      <a href="changelog.html" data-lang-link="changelog.html" data-i18n="nav.changelog">Novedades</a>
+    </nav>
+    <div class="lang-switch" role="group" data-lang-switch data-i18n-aria="lang.group" aria-label="Idioma">
+      <button type="button" data-lang="es" aria-current="true">ES</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+<main id="main" class="changelog-page">
+  <section>
+    <p class="eyebrow" data-i18n="changelog.eyebrow">Versiones del launcher</p>
+    <h1 data-i18n="changelog.heading">Novedades</h1>
+    <p class="lead" data-i18n="changelog.intro">Consulta los cambios de cada versión del launcher.</p>
+    <p id="release-status" role="status" data-i18n="changelog.loading">Cargando novedades…</p>
+    <div id="release-list" aria-live="polite"></div>
+  </section>
+</main>
+<footer>
+  <span>© Fangame Launcher</span>
+  <a href="https://github.com/Pokemon-Fan-Games/fangame-launcher-releases">GitHub</a>
+  <a href="index.html" data-lang-link="index.html" data-i18n="footer.home">Inicio</a>
+  <a href="privacy.html" data-lang-link="privacy.html" data-i18n="footer.privacy">Privacidad</a>
+</footer>
+<script src="i18n.js"></script>
+<script src="changelog.js"></script>
+</body>
+</html>

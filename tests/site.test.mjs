@@ -47,14 +47,15 @@ const enDictionary = await readFile(new URL('../docs/locales/en.js', import.meta
 
 test('cada clave usada en el sitio está traducida y no sobran claves', async () => {
   const sources = [];
-  for (const page of ['index.html', 'privacy.html']) {
+  for (const page of ['index.html', 'privacy.html', 'changelog.html']) {
     sources.push(await readFile(new URL(`../docs/${page}`, import.meta.url), 'utf8'));
   }
   sources.push(await readFile(new URL('../docs/app.js', import.meta.url), 'utf8'));
+  sources.push(await readFile(new URL('../docs/changelog.js', import.meta.url), 'utf8'));
   const used = new Set();
   for (const source of sources) {
     for (const match of source.matchAll(/data-i18n(?:-alt|-aria|-title|-content)?="([^"]+)"/g)) used.add(match[1]);
-    for (const match of source.matchAll(/i18n\.t\("([^"]+)"/g)) used.add(match[1]);
+    for (const match of source.matchAll(/(?:i18n|FangameI18n)\.t\("([^"]+)"/g)) used.add(match[1]);
   }
   const defined = new Set([...enDictionary.matchAll(/^\s*"([^"]+)":/gm)].map(match => match[1]));
   for (const key of used) assert.ok(defined.has(key), `Missing English translation: ${key}`);
