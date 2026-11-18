@@ -108,7 +108,7 @@ test('la página de privacidad ofrece el conmutador y el enlace de vuelta', () =
 });
 
 test('makers and downloads are announced as coming soon with no live links', () => {
-  assert.equal((html.match(/data-i18n="common.soon"/g) || []).length, 5);
+  assert.equal((html.match(/data-i18n="common.soon"/g) || []).length, 6);
   assert.doesNotMatch(html, /dpserver\.es\/portal|data-ext=|releases\/download/);
   assert.doesNotMatch(html, /href="https:\/\/github\.com\/[^"]+\/releases"/);
 });

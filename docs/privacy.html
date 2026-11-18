@@ -35,8 +35,8 @@
   <section>
     <p class="eyebrow" data-i18n="privacy.eyebrow">Privacidad</p>
     <h1 data-i18n="privacy.heading">Política de privacidad</h1>
-    <p class="mute" data-i18n="privacy.updated">Última actualización: 2026-11-03</p>
-    <p class="lead left" data-i18n="privacy.intro">Fangame Launcher es una aplicación de escritorio para descargar y jugar fangames.</p>
+    <p class="mute" data-i18n="privacy.updated">Última actualización: 2026-11-18</p>
+    <p class="lead left" data-i18n="privacy.intro">Fangame Launcher es una aplicación para escritorio (Windows, Linux y macOS) y Android para descargar y jugar fangames.</p>
 
     <h2 data-i18n="privacy.data.title">Qué datos usa</h2>
     <ul>
@@ -44,6 +44,10 @@
       <li data-i18n="privacy.data.counter"><strong>Contador de descargas.</strong> Cuando una descarga o actualización termina y su integridad se verifica, el launcher envía a nuestro servidor un evento con: un identificador aleatorio del evento, el juego, la versión, la plataforma de la build, el sistema operativo del launcher, la versión del launcher, el hash SHA-256 del archivo y si es descarga o actualización. El servidor añade la fecha. <strong>No se envían ni guardan cuenta, nombre, dispositivo, hardware, dirección IP ni user-agent</strong> en ese registro, y el identificador no se deriva de ti ni de tu equipo. Se usa solo para mostrar cuántas veces se descargó cada juego. Para limitar abusos, el servidor usa temporalmente tu dirección IP en una caché volátil (como un código hash con sal que expira en 60 segundos); no se guarda en la base de datos. La infraestructura de alojamiento puede conservar registros técnicos de acceso según su propia configuración.</li>
     </ul>
 
+    <h2 data-i18n="privacy.android.title">En Android</h2>
+    <ul>
+      <li data-i18n="privacy.android.background"><strong>Descargas en segundo plano.</strong> Las descargas continúan con la pantalla apagada mediante un servicio en primer plano que muestra una notificación con el progreso. El permiso de notificaciones se usa solo para eso.</li>
+    </ul>
     <h2 data-i18n="privacy.video.title">Vídeos y servicios externos</h2>
     <p data-i18n="privacy.video.body">Las fichas de juegos pueden incluir vídeos de YouTube. En el launcher, al pasar el cursor sobre el control de reproducción de un vídeo o enfocarlo con el teclado, se precargan el reproductor y la API de YouTube; esto inicia una conexión e intercambio de datos básicos con YouTube antes de que pulses reproducir. El vídeo no empieza hasta que activas el control. En la web pública, el reproductor solo se carga cuando pulsas reproducir. El reproductor incrustado (youtube-nocookie.com) se rige por la política de privacidad de Google.</p>
 
@@ -51,7 +55,7 @@
     <ul>
       <li data-i18n="privacy.google.scope">La app solicita únicamente el permiso <code>https://www.googleapis.com/auth/drive.appdata</code>. Da acceso a una carpeta privada de la aplicación en tu Drive. <strong>No puede ver ni modificar tus demás archivos de Drive.</strong></li>
       <li data-i18n="privacy.google.flow">Los datos viajan directamente entre tu equipo y Google Drive. No pasan por servidores del proyecto y no los recibimos, almacenamos ni compartimos.</li>
-      <li data-i18n="privacy.google.token">El token de acceso se guarda en el almacén seguro de credenciales de tu sistema operativo.</li>
+      <li data-i18n="privacy.google.token">El token de acceso se guarda en el almacén seguro de credenciales de tu sistema operativo. En Android se guarda cifrado con una clave del almacén de claves de Android (Android Keystore), en el almacenamiento privado de la app.</li>
       <li data-i18n="privacy.google.policy">El uso de la información recibida de las APIs de Google cumple la <a href="https://developers.google.com/terms/api-services-user-data-policy">Política de datos de usuario de los servicios de API de Google</a>, incluidos los requisitos de uso limitado.</li>
     </ul>
 
