@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-i18n-title="meta.title">Fangame Launcher: instala, actualiza y juega fangames</title>
-  <meta name="description" data-i18n-content="meta.description" content="Launcher de escritorio para descubrir, instalar, actualizar y ejecutar fangames en Windows, Linux y macOS, con copias de tus partidas.">
+  <meta name="description" data-i18n-content="meta.description" content="Launcher para descubrir, instalar, actualizar y ejecutar fangames en Windows, Linux, macOS y Android, con copias de tus partidas.">
   <link rel="icon" href="assets/icon.png">
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="style.css">
@@ -135,11 +135,12 @@
   <section id="descargar">
     <p class="eyebrow" data-i18n="download.eyebrow">Descargar</p>
     <h2 data-i18n="download.title">Próximamente.</h2>
-    <p class="mute" data-i18n="download.soon">Las descargas para Windows, Linux y macOS estarán disponibles muy pronto.</p>
+    <p class="mute" data-i18n="download.soon">Las descargas para Windows, Linux, macOS y Android estarán disponibles muy pronto.</p>
     <div class="grid dl">
       <article class="card"><h3>Windows</h3><p class="platform-arch">x86_64</p><div class="btns"><span class="btn soon" data-i18n="common.soon">Próximamente</span></div></article>
       <article class="card"><h3>Linux</h3><p class="platform-arch">x86_64 · Steam Deck</p><div class="btns"><span class="btn soon" data-i18n="common.soon">Próximamente</span></div></article>
       <article class="card"><h3>macOS</h3><p class="platform-arch">Intel · Apple Silicon</p><div class="btns"><span class="btn soon" data-i18n="common.soon">Próximamente</span></div></article>
+      <article class="card"><h3>Android</h3><p class="platform-arch">arm64</p><div class="btns"><span class="btn soon" data-i18n="common.soon">Próximamente</span></div></article>
     </div>
   </section>
 
@@ -149,6 +150,8 @@
     <details><summary data-i18n="faq.free.summary">¿Es gratis?</summary><p data-i18n="faq.free.body">Sí. Descargar y usar el launcher es gratis para los jugadores. Para los makers, subir y publicar sus juegos también es gratis.</p></details>
     <details><summary data-i18n="faq.saves.summary">¿Las copias funcionan con todos los juegos?</summary><p data-i18n="faq.saves.body">Dependen de la ubicación de partidas declarada por el maker y de la compatibilidad del motor. En macOS, el launcher utiliza su propio Wine gestionado para ejecutar los juegos de Windows compatibles. Conserva una copia manual antes de cambiar de motor o instalar una versión incompatible.</p></details>
     <details><summary data-i18n="faq.uninstall.summary">¿Qué pasa al desinstalar?</summary><p data-i18n="faq.uninstall.body">El launcher elimina la instalación que gestiona. Las partidas externas, los prefijos de compatibilidad y algunas carpetas antiguas pueden conservarse y requerir limpieza manual.</p></details>
+    <details><summary data-i18n="faq.android.summary">¿Qué permisos pide en Android?</summary><p data-i18n="faq.android.body">Permiso para instalar y desinstalar apps, porque algunos juegos se instalan como apps de Android. El launcher solo instala, actualiza o desinstala los juegos que eliges, y siempre con la confirmación de Android. También usa las notificaciones para mostrar el progreso de las descargas en segundo plano. No consulta ni envía la lista de tus apps.</p></details>
+    <details><summary data-i18n="faq.protect.summary">¿Por qué Google Play Protect muestra un aviso?</summary><p data-i18n="faq.protect.body">El launcher no se descarga desde Google Play e instala otras apps (los juegos que eliges). Play Protect puede marcar este tipo de apps hasta que Google las revisa. Descarga el launcher solo desde esta web o desde nuestro GitHub. Si aparece el aviso, en «Más detalles» puedes elegir instalarlo igualmente.</p></details>
     <details><summary data-i18n="faq.data.summary">¿Qué datos se envían?</summary><p><span data-i18n="faq.data.bodyBefore">El catálogo, las descargas y las funciones opcionales, como la cuenta de jugador o la sincronización con tu Google Drive, requieren comunicarse con sus servicios. Consulta qué datos utiliza cada función en la </span><a href="privacy.html" data-lang-link="privacy.html" data-i18n="faq.data.bodyLink">política de privacidad</a>.</p></details>
     <details><summary data-i18n="faq.publish.summary">¿Cómo publico mi juego?</summary><p data-i18n="faq.publish.body">El portal de makers abrirá próximamente. Vuelve pronto para publicar tu build.</p></details>
   </section>
