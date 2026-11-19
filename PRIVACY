@@ -1,33 +1,59 @@
 # Política de privacidad / Privacy Policy
 
-*Última actualización / Last updated: 2026-11-18*
+_Última actualización / Last updated: 2026-11-19_
 
 ## Español
 
 **Fangame Launcher** es una aplicación para escritorio (Windows, Linux y macOS) y Android para descargar y jugar fangames.
 
 ### Qué datos usa
+
 - **Partidas guardadas de tus juegos.** Si conectas Google Drive, el launcher copia esas partidas a tu cuenta de Google Drive y las restaura en otros equipos.
-- **Contador de descargas.** Cuando una descarga o actualización termina y su integridad se verifica, el launcher envía a nuestro servidor un evento con: un identificador aleatorio del evento, el juego, la versión, la plataforma de la build, el sistema operativo del launcher, la versión del launcher, el hash SHA-256 del archivo y si es descarga o actualización. El servidor añade la fecha. **No se envían ni guardan cuenta, nombre, dispositivo, hardware, dirección IP ni user-agent** en ese registro, y el identificador no se deriva de ti ni de tu equipo. Se usa solo para mostrar cuántas veces se descargó cada juego. Para limitar abusos, el servidor usa temporalmente tu dirección IP en una caché volátil (como un código hash con sal que expira en 60 segundos); no se guarda en la base de datos. La infraestructura de alojamiento puede conservar registros técnicos de acceso según su propia configuración.
+- **Contador de descargas.** Cuando una descarga o actualización termina y su integridad se verifica, el launcher envía a nuestro servidor un evento con: un identificador aleatorio del evento, el juego, la versión, la plataforma de la build, el sistema operativo del launcher, la versión del launcher, el hash SHA-256 del archivo y si es descarga o actualización. El servidor añade la fecha. **Ese registro no contiene cuenta, nombre, dispositivo, hardware, dirección IP ni user-agent**, y el identificador no se deriva de ti ni de tu equipo. Se usa solo para mostrar cuántas veces se descargó cada juego. Para limitar abusos, el servidor usa temporalmente tu dirección IP en una caché volátil (como un código hash con sal que expira en 60 segundos); no se guarda en la base de datos del contador. La infraestructura de alojamiento puede conservar registros técnicos de acceso según su propia configuración.
+- **Créditos públicos de los juegos.** Las cuentas Maker pueden indicar los nombres de personas o equipos que quieren acreditar; esos nombres se muestran en las fichas y el catálogo. El nombre de la cuenta propietaria solo se usa como crédito de respaldo si no se han indicado autores.
+- **Cuenta de jugador.** Crear una cuenta es opcional. Si la creas, indicas un nombre de usuario, correo y contraseña. Para iniciar sesión, el launcher envía tu nombre de usuario y contraseña al backend por HTTPS. La contraseña no se almacena en texto plano. El backend relaciona tu cuenta con los juegos de betas privadas para los que el equipo te haya asignado acceso. El launcher guarda un token de sesión en el almacén seguro del sistema operativo; el servidor guarda solo su hash. El token caduca a los 30 días. Al cerrar sesión, el launcher intenta revocarlo en el servidor y siempre elimina la copia local; si no hay conexión, el token del servidor seguirá siendo válido hasta que caduque. Para limitar intentos, el backend conserva temporalmente un hash con sal de la dirección IP en caché volátil durante un minuto. Al crear una cuenta en el launcher, el backend envía un código temporal de seis dígitos al correo indicado. El código se almacena solo como hash, caduca a los 10 minutos y permite hasta cinco intentos. Tras verificarlo, el correo queda marcado como verificado y el launcher inicia sesión automáticamente.
+
+### Datos de juego asociados a tu cuenta
+
+Solo se envían si inicias sesión con una cuenta de jugador. Sin sesión, el launcher los guarda únicamente en tu equipo.
+
+- **Identificador del dispositivo.** El launcher genera al azar un identificador la primera vez que lo necesita y lo guarda en tu equipo. No se deriva de tu equipo ni de su hardware. Se envía junto al tiempo de juego, los logros y los juegos completados para distinguir tus dispositivos.
+- **Tiempo de juego.** En escritorio, cuando juegas a un juego del catálogo, el launcher envía el juego, la hora de inicio y los segundos jugados. El servidor también registra cuándo empieza y termina cada sesión para medir el tiempo por su cuenta. Se usa para mostrarte tu tiempo total en todos tus dispositivos, para permitir puntuar un juego después de 30 minutos de juego y para verificar los logros.
+- **Logros.** Los juegos compatibles anotan los logros en un archivo dentro de su carpeta de partidas. En escritorio y Android, el launcher lee ese archivo y envía el juego, el identificador de cada logro, su progreso, la hora anotada por el juego y un código aleatorio por evento. El servidor guarda qué logros tienes, cuándo los desbloqueaste y tu progreso. Para detectar trampas, marca como no verificados los logros con señales como una fecha futura, una fecha anterior a la creación de la cuenta, muchos logros a la vez, falta de tiempo de juego, un desbloqueo fuera de una sesión de juego o el mismo evento en otra cuenta. Un logro no verificado no cuenta para la rareza. El dueño de cada juego en el portal ve los logros no verificados de su juego, con el nombre de usuario de la cuenta y los motivos, y puede revocarlos o reiniciar los logros de esa cuenta en su juego. El equipo de moderación también puede hacerlo, y esas acciones quedan registradas. La rareza de cada logro se muestra solo como porcentaje de las cuentas con actividad en el juego, sin nombres, y únicamente cuando hay al menos 10.
+- **Juegos completados.** Cuando un juego compatible indica que lo terminaste, el launcher envía la fecha, el tiempo de juego que indica la partida, si lo hay, y si lo detectó la partida o el launcher. Se guarda solo la primera vez por juego.
+- **Puntuaciones.** Si puntúas un juego, se guarda una puntuación por cuenta y juego, que puedes cambiar o borrar. Públicamente solo se muestran la media y el número de votos.
+- **Carpetas de la biblioteca.** Los nombres de tus carpetas, si son favoritas y qué juegos contienen se guardan en tu cuenta para verlas igual en tus otros dispositivos.
+
+Salvo lo que ve el dueño de un juego sobre los logros no verificados de ese juego, ninguno de estos datos se muestra públicamente con tu nombre de usuario.
 
 ### En Android
+
 - **Descargas en segundo plano.** Las descargas continúan con la pantalla apagada mediante un servicio en primer plano que muestra una notificación con el progreso. El permiso de notificaciones se usa solo para eso.
+
+### Discord Rich Presence
+
+Está desactivado por defecto. Si lo activas, el launcher envía al cliente de Discord de escritorio, mediante IPC local, el nombre del juego, la hora de inicio de la sesión, la imagen pública del catálogo cuando es compatible y enlaces públicos al juego y a la distribución del launcher. Discord publica la actividad según tus ajustes de privacidad y puede obtener las imágenes desde sus URLs públicas. No se envían partidas, rutas locales, portadas personales, argumentos de lanzamiento ni credenciales. No necesitas un bot, token ni iniciar sesión en Discord desde el launcher. Puedes desactivarlo y excluir juegos desde Configuración. Las pruebas con identificadores `review-` no se comparten. Al cerrar el launcher termina esta integración, aunque el juego siga abierto.
+
+Las betas privadas requieren además el permiso explícito del maker, desactivado por defecto. Mientras se ejecuta una beta privada, el launcher consulta el catálogo autenticado del backend al iniciar y aproximadamente cada minuto para confirmar ese permiso, incluso si el jugador tiene la presencia desactivada. Si no puede confirmarlo, no publica la beta. Una revocación puede tardar aproximadamente un minuto más el tiempo de la petición en detectarse. El token de jugador solo se envía al backend, nunca a Discord.
 
 ### Vídeos y servicios externos
 
-Las fichas de juegos pueden incluir vídeos de YouTube. En el launcher, al pasar el cursor sobre el control de reproducción de un vídeo o enfocarlo con el teclado, se precargan el reproductor y la API de YouTube; esto inicia una conexión e intercambio de datos básicos con YouTube antes de que pulses reproducir. El vídeo no empieza hasta que activas el control. En la web pública, el reproductor solo se carga cuando pulsas reproducir. El reproductor incrustado (`youtube-nocookie.com`) se rige por la [política de privacidad de Google](https://policies.google.com/privacy).
+Las fichas de juegos pueden incluir vídeos de YouTube. En el launcher, al pasar el cursor sobre el control de reproducción de un vídeo o enfocarlo con el teclado, se precargan el reproductor y la API de YouTube; esto inicia una conexión e intercambio de datos básicos con YouTube antes de que pulses reproducir. El vídeo no empieza hasta que activas el control. En la web pública, el reproductor solo se carga cuando pulsas reproducir. El reproductor incrustado (`youtube-nocookie.com`) se rige por la [política de privacidad de Google](https://policies.google.com/privacy). El servidor del catálogo solo contacta con IGDB/Twitch cuando un maker usa la importación opcional de metadatos, nunca en nombre de los jugadores.
 
 ### Acceso a Google
+
 - La app solicita únicamente el permiso `https://www.googleapis.com/auth/drive.appdata`. Da acceso a una carpeta privada de la aplicación en tu Drive. **No puede ver ni modificar tus demás archivos de Drive.**
 - Los datos viajan directamente entre tu equipo y Google Drive. No pasan por servidores del proyecto y no los recibimos, almacenamos ni compartimos.
 - El token de acceso se guarda en el almacén seguro de credenciales de tu sistema operativo. En Android se guarda cifrado con una clave del almacén de claves de Android (Android Keystore), en el almacenamiento privado de la app.
 - El uso de la información recibida de las APIs de Google cumple la [Política de datos de usuario de los servicios de API de Google](https://developers.google.com/terms/api-services-user-data-policy), incluidos los requisitos de uso limitado.
 
 ### Control
+
 - Puedes desconectar tu cuenta en cualquier momento desde **Configuración** en el launcher. Esto revoca el acceso y borra el token local.
 - También puedes revocar el acceso en <https://myaccount.google.com/permissions> y borrar los datos de la app desde la configuración de Google Drive.
 
 ### Contacto
+
 Para consultas sobre privacidad: fangameslauncher@gmail.com
 
 ## English
@@ -35,25 +61,51 @@ Para consultas sobre privacidad: fangameslauncher@gmail.com
 **Fangame Launcher** is an application for desktop (Windows, Linux and macOS) and Android for downloading and playing fan games.
 
 ### Data it uses
+
 - **Your games' save files.** If you connect Google Drive, the launcher copies those saves to your Google Drive account and restores them on other devices.
-- **Download counter.** When a download or update finishes and its integrity is verified, the launcher sends our server an event with: a random event identifier, the game, the version, the build platform, the launcher's operating system, the launcher version, the file's SHA-256 hash and whether it is a download or an update. The server adds the date. **No account, name, device, hardware, IP address or user-agent is sent or stored** in that record, and the identifier is not derived from you or your device. It is used only to show how many times each game was downloaded. To limit abuse, the server briefly uses your IP address in a volatile cache (as a salted hash that expires after 60 seconds); it is not stored in the database. The hosting infrastructure may keep technical access logs according to its own configuration.
+- **Download counter.** When a download or update finishes and its integrity is verified, the launcher sends our server an event with: a random event identifier, the game, the version, the build platform, the launcher's operating system, the launcher version, the file's SHA-256 hash and whether it is a download or an update. The server adds the date. **That record contains no account, name, device, hardware, IP address or user-agent**, and the identifier is not derived from you or your device. It is used only to show how many times each game was downloaded. To limit abuse, the server briefly uses your IP address in a volatile cache (as a salted hash that expires after 60 seconds); it is not stored in the counter database. The hosting infrastructure may keep technical access logs according to its own configuration.
+- **Public game credits.** Maker accounts can provide the names of people or teams they want to credit; those names appear on game pages and in the catalogue. The owner account's username is used as a fallback credit only when no authors are provided.
+- **Player account.** Creating an account is optional. When you create one, you provide a username, email address and password. To sign in, the launcher sends your username and password to the backend over HTTPS for authentication. The password is not stored in plain text. The backend links your account to private beta games for which the team has granted you access. The launcher stores a session token in your operating system's secure credential store; the server stores only its hash. The token expires after 30 days. When you sign out, the launcher attempts to revoke it on the server and always deletes the local copy; if there is no connection, the server token remains valid until it expires. To limit login attempts, the backend temporarily keeps a salted hash of the IP address in a volatile cache for one minute. When you create an account in the launcher, the backend emails a temporary six-digit code to the address provided. Only a hash of the code is stored; it expires after 10 minutes and allows up to five attempts. After verification, the email is marked as verified and the launcher signs you in automatically.
+
+### Game data linked to your account
+
+This data is sent only if you sign in with a player account. Without a session, the launcher keeps it on your device only.
+
+- **Device identifier.** The launcher generates a random identifier the first time it needs one and stores it on your device. It is not derived from your device or its hardware. It is sent with playtime, achievements and completed games to tell your devices apart.
+- **Playtime.** On desktop, when you play a catalogue game, the launcher sends the game, the start time and the seconds played. The server also records when each session starts and ends to measure the time itself. It is used to show your total time across your devices, to allow rating a game after 30 minutes of play and to verify achievements.
+- **Achievements.** Compatible games record achievements in a file inside their save folder. On desktop and Android, the launcher reads that file and sends the game, each achievement's identifier, its progress, the time recorded by the game and a random code per event. The server stores which achievements you have, when you unlocked them and your progress. To detect cheating, it marks as unverified the achievements that show signals such as a future date, a date before the account was created, many achievements at once, no playtime, an unlock outside a play session or the same event on another account. An unverified achievement does not count towards rarity. The owner of each game on the portal sees the unverified achievements of their game, with the account's username and the reasons, and can revoke them or reset that account's achievements in their game. The moderation team can do the same, and those actions are logged. Each achievement's rarity is shown only as a percentage of the accounts with activity in the game, without names, and only when there are at least 10.
+- **Completed games.** When a compatible game reports that you finished it, the launcher sends the date, the playtime reported by the save if there is one, and whether the save or the launcher detected it. Only the first time per game is stored.
+- **Ratings.** If you rate a game, one rating per account and game is stored; you can change or delete it. Only the average and the number of votes are shown publicly.
+- **Library folders.** Your folder names, whether they are favourites and which games they contain are stored in your account so they look the same on your other devices.
+
+Apart from what a game's owner sees about the unverified achievements of that game, none of this data is shown publicly with your username.
 
 ### On Android
+
 - **Background downloads.** Downloads continue with the screen off through a foreground service that shows a notification with the progress. The notification permission is used only for that.
+
+### Discord Rich Presence
+
+Disabled by default. If enabled, the launcher sends the game's name, session start time, a compatible public catalogue image and public links to the game and launcher distribution to the desktop Discord client through local IPC. Discord publishes the activity according to your privacy settings and may fetch images from their public URLs. Save files, local paths, personal covers, launch arguments and credentials are not sent. No bot, token or Discord sign-in through the launcher is required. You can disable it and exclude games in Settings. Test builds with `review-` identifiers are never shared. Closing the launcher ends this integration, even if the game remains open.
+
+Private betas also require the maker's explicit permission, disabled by default. While a private beta is running, the launcher checks the backend's authenticated catalogue at startup and approximately every minute to confirm that permission, even when the player has presence disabled. If permission cannot be confirmed, the beta is not published. Detecting revocation may take approximately one minute plus the request duration. The player token is sent only to the backend, never to Discord.
 
 ### Videos and external services
 
-Game pages may include YouTube videos. In the launcher, hovering over or keyboard-focusing a video's play control preloads the YouTube player and API; this contacts YouTube and shares basic data before you press play. The video does not start until you activate the control. On the public website, the player loads only when you press play. The embedded player (`youtube-nocookie.com`) is subject to Google's [Privacy Policy](https://policies.google.com/privacy).
+Game pages may include YouTube videos. In the launcher, hovering over or keyboard-focusing a video's play control preloads the YouTube player and API; this contacts YouTube and shares basic data before you press play. The video does not start until you activate the control. On the public website, the player loads only when you press play. The embedded player (`youtube-nocookie.com`) is subject to Google's [Privacy Policy](https://policies.google.com/privacy). The catalogue server contacts IGDB/Twitch only when a maker uses the optional metadata import, never on behalf of players.
 
 ### Google access
+
 - The app requests only the `https://www.googleapis.com/auth/drive.appdata` scope. It grants access to a private application folder in your Drive. **It cannot see or modify your other Drive files.**
 - Data travels directly between your device and Google Drive. It does not pass through any project server, and we do not receive, store or share it.
 - The access token is kept in your operating system's secure credential store. On Android it is stored encrypted with a key from the Android Keystore, in the app's private storage.
 - Use of information received from Google APIs adheres to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
 
 ### Control
+
 - You can disconnect your account at any time from **Settings** in the launcher. This revokes access and deletes the local token.
 - You can also revoke access at <https://myaccount.google.com/permissions> and delete the app's data from Google Drive settings.
 
 ### Contact
+
 For privacy questions: fangameslauncher@gmail.com
