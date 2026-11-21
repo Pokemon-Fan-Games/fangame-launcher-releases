@@ -82,7 +82,7 @@ test('the language switch swaps the whole page and keeps the layout intact', asy
     const english = await text("document.querySelector('h1').textContent");
     if (english === spanish) throw Error('The headline did not change');
     if (!/All your fan games/.test(english)) throw Error(`Unexpected English headline: ${english}`);
-    if (!/Fangame Launcher: install/.test(await text("document.title"))) throw Error('The document title was not translated');
+    if (!/Fangame Launcher: download/.test(await text("document.title"))) throw Error('The document title was not translated');
     if (!/Coming soon/.test(await text("document.querySelector('#descargar h2').textContent"))) throw Error('The downloads heading was not translated');
     for (const width of [320, 390, 768, 1440]) {
       await browser('set', 'viewport', String(width), '1000');

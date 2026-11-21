@@ -106,3 +106,19 @@ html[data-i18n-pending] body{visibility:hidden}
 .release-entry code {
   font-family: var(--font-family-3);
 }
+
+.api-page h2,.api-page h3{scroll-margin-top:96px}
+.api-page h3{margin:32px 0 8px}
+.api-page .toc{list-style:none;display:flex;flex-wrap:wrap;gap:8px 24px;padding:0;margin:0 0 8px}
+.api-page .toc li{margin:0}
+.api-page .nav nav a[aria-current="page"],.nav nav a[aria-current="page"]{color:var(--color-ink);text-decoration:underline;text-underline-offset:6px;text-decoration-color:var(--color-primary)}
+.endpoint{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin:0 0 8px}
+.endpoint code{overflow-wrap:anywhere}
+.method{font:var(--text-code-strong)/var(--leading-code-strong) var(--font-family-3);letter-spacing:.08em;color:var(--color-on-primary);background:var(--color-primary);padding:2px 8px;border-radius:var(--radius-sm)}
+.api-page .code{margin:16px 0 24px}
+.api-page .code code{white-space:pre}
+.params{margin:0 0 24px;border-top:1px solid var(--color-hairline)}
+.params>div{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:4px 24px;padding:12px 0;border-bottom:1px solid var(--color-hairline)}
+.params dt,.params dd{margin:0;min-width:0}
+.params dt code{margin-right:4px;white-space:normal}
+@media(max-width:600px){.params>div{grid-template-columns:minmax(0,1fr)}}

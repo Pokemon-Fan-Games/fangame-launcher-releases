@@ -47,7 +47,7 @@ const enDictionary = await readFile(new URL('../docs/locales/en.js', import.meta
 
 test('cada clave usada en el sitio está traducida y no sobran claves', async () => {
   const sources = [];
-  for (const page of ['index.html', 'privacy.html', 'changelog.html']) {
+  for (const page of ['index.html', 'privacy.html', 'changelog.html', 'api.html']) {
     sources.push(await readFile(new URL(`../docs/${page}`, import.meta.url), 'utf8'));
   }
   sources.push(await readFile(new URL('../docs/app.js', import.meta.url), 'utf8'));

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n-title="api.title">API pública · Fangame Launcher</title>
+  <meta name="description" data-i18n-content="api.meta" content="Documentación de la API pública de solo lectura del catálogo de Fangame Launcher: juegos, versiones y estado de desarrollo.">
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Reserva la traducción hasta que i18n.js la aplique: evita el destello de idioma.
+    document.documentElement.setAttribute("data-i18n-pending", "1");
+    setTimeout(function () {
+      if (!window.__fangameI18nApplied) document.documentElement.removeAttribute("data-i18n-pending");
+    }, 3000);
+  </script>
+  <script src="locales/en.js"></script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="nav.skip">Saltar al contenido</a>
+<header class="nav">
+  <a class="brand" href="index.html" data-lang-link="index.html"><img src="assets/icon.png" alt="" width="28" height="28">Fangame Launcher</a>
+  <div class="nav-end">
+    <nav aria-label="Principal" data-i18n-aria="nav.main">
+      <a href="index.html#funciones" data-i18n="nav.features">Funciones</a>
+      <a href="index.html#capturas" data-i18n="nav.screenshots">Capturas</a>
+      <a href="index.html#makers" data-i18n="nav.makers">Makers</a>
+      <a href="index.html#descargar" data-i18n="nav.download">Descargar</a>
+      <a href="index.html#faq" data-i18n="nav.faq">Preguntas</a>
+      <a href="changelog.html" data-lang-link="changelog.html" data-i18n="nav.changelog">Novedades</a>
+      <a href="api.html" data-lang-link="api.html" data-i18n="nav.api" aria-current="page">API</a>
+    </nav>
+    <div class="lang-switch" role="group" data-lang-switch data-i18n-aria="lang.group" aria-label="Idioma">
+      <button type="button" data-lang="es" aria-current="true">ES</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="prose-page api-page">
+  <section>
+    <p class="eyebrow" data-i18n="api.eyebrow">API pública</p>
+    <h1 data-i18n="api.heading">API pública del catálogo</h1>
+    <p class="lead left" data-i18n="api.intro">Acceso de solo lectura y sin autenticación al catálogo: juegos, versiones publicadas y estado de desarrollo. Todas las respuestas son JSON.</p>
+
+    <ul class="toc" aria-label="En esta página" data-i18n-aria="api.toc">
+      <li><a href="#alcance" data-i18n="api.toc.scope">Alcance</a></li>
+      <li><a href="#base" data-i18n="api.toc.base">URL base</a></li>
+      <li><a href="#listado" data-i18n="api.toc.list">Listado</a></li>
+      <li><a href="#detalle" data-i18n="api.toc.detail">Detalle</a></li>
+      <li><a href="#versiones" data-i18n="api.toc.versions">Versiones</a></li>
+      <li><a href="#esquema" data-i18n="api.toc.schema">Esquema</a></li>
+      <li><a href="#campos" data-i18n="api.toc.fields">Campos</a></li>
+      <li><a href="#limites" data-i18n="api.toc.limits">Límites</a></li>
+      <li><a href="#errores" data-i18n="api.toc.errors">Errores</a></li>
+    </ul>
+
+    <h2 id="alcance" data-i18n="api.scope.title">Qué ofrece y qué no</h2>
+    <p data-i18n="api.scope.yes">Ofrece los juegos aprobados con sus datos públicos (título, descripciones, autores, idiomas, etiquetas, portada, capturas y estado), las versiones publicadas de cada juego y el contrato OpenAPI.</p>
+    <p data-i18n="api.scope.no">No ofrece descargas ni URLs de descarga, datos de usuarios, versiones de betas privadas ni contadores (descargas, puntuaciones, tiempo de juego). Los textos libres se devuelven sin los enlaces que el maker haya pegado en ellos.</p>
+    <p data-i18n="api.scope.off">La API puede estar desactivada en algunas instancias del backend. En ese caso toda ruta responde <code>404</code> con un error JSON.</p>
+
+    <h2 id="base" data-i18n="api.base.title">URL base</h2>
+    <p data-i18n="api.base.body">Todas las rutas cuelgan de <code>/api/v1/</code> en <code>https://makers-fangames-launcher.dpserver.es</code>.</p>
+
+    <h2 id="listado" data-i18n="api.list.title">Listado de juegos</h2>
+    <p class="endpoint"><span class="method">GET</span> <code>/api/v1/games/</code></p>
+    <p data-i18n="api.list.intro">Devuelve los juegos ordenados por <code>id</code> (ascendente), en páginas. Todos los parámetros son opcionales y se pueden combinar.</p>
+    <dl class="params">
+      <div><dt><code>limit</code></dt><dd data-i18n="api.list.limit">Tamaño de página: 50 por defecto, máximo 100. Un valor mayor se reduce a 100; un valor no numérico o menor que 1 devuelve <code>400</code>.</dd></div>
+      <div><dt><code>cursor</code></dt><dd data-i18n="api.list.cursor">Valor opaco de <code>next_cursor</code> de la página anterior. Mantén los mismos filtros en cada petición.</dd></div>
+      <div><dt><code>status</code></dt><dd data-i18n="api.list.status"><code>complete</code>, <code>demo</code>, <code>beta</code> o <code>announced</code>. Se compara con el estado de la versión pública actual del juego.</dd></div>
+      <div><dt><code>development_state</code></dt><dd data-i18n="api.list.state"><code>active</code>, <code>on_hold</code> o <code>abandoned</code>. Se compara con el estado efectivo, el mismo que devuelve el campo <code>development_state</code>.</dd></div>
+      <div><dt><code>tag</code></dt><dd data-i18n="api.list.tag">Nombre exacto de una etiqueta, sin distinguir mayúsculas.</dd></div>
+      <div><dt><code>platform</code></dt><dd data-i18n="api.list.platform"><code>windows</code>, <code>macos</code>, <code>linux</code> o <code>android</code>. Juegos cuya versión pública actual tiene una build para esa plataforma. Si la instancia no ofrece la plataforma, la lista sale vacía.</dd></div>
+      <div><dt><code>updated_since</code></dt><dd data-i18n="api.list.since">Fecha o fecha y hora ISO 8601, inclusiva. Sin zona horaria se asume UTC.</dd></div>
+    </dl>
+    <p data-i18n="api.list.invalid">Un valor no válido en cualquiera de ellos devuelve <code>400</code> con el código <code>invalid_query</code>.</p>
+    <pre class="code" tabindex="0" translate="no"><code>curl "https://makers-fangames-launcher.dpserver.es/api/v1/games/?development_state=on_hold&amp;limit=1"</code></pre>
+    <pre class="code" tabindex="0" translate="no"><code>{
+  "results": [
+    {
+      "id": "marea-roja",
+      "title": "Marea Roja",
+      "description": "Una región costera dividida por una marea que no deja de subir.",
+      "short_description": "Aventura por una costa que se hunde.",
+      "status": "beta",
+      "development_state": "on_hold",
+      "development_note": "Pausado hasta terminar los gráficos del tercer gimnasio.",
+      "authors": ["Estudio Faro", "Lucía M."],
+      "languages": ["es", "en"],
+      "tags": ["Aventura", "Historia original"],
+      "content_hours": 8.5,
+      "wiki_url": "https://wiki.example.org/marea-roja",
+      "adults_only": false,
+      "cover_adults_only": false,
+      "announced_milestone": null,
+      "planned_release_date": null,
+      "latest_version": "0.7.2",
+      "updated_at": "2026-11-14T18:42:07.311204+00:00",
+      "cover_url": "https://makers-fangames-launcher.dpserver.es/media/covers/marea-roja.png",
+      "screenshots": [
+        "https://makers-fangames-launcher.dpserver.es/media/screenshots/marea-roja-1.png",
+        "https://makers-fangames-launcher.dpserver.es/media/screenshots/marea-roja-2.png"
+      ]
+    }
+  ],
+  "next_cursor": "Im1hcmVhLXJvamEi:KpdRbDVLaISM29j1SiJqClWyHtE44getbFy7nACqWuo"
+}</code></pre>
+    <p data-i18n="api.list.next"><code>next_cursor</code> es <code>null</code> en la última página. Para pedir la siguiente, repite la petición con <code>cursor=&lt;next_cursor&gt;</code>. Como la paginación sigue el <code>id</code>, borrar un juego entre páginas no repite ni salta otros.</p>
+
+    <h2 id="detalle" data-i18n="api.detail.title">Detalle de un juego</h2>
+    <p class="endpoint"><span class="method">GET</span> <code>/api/v1/games/{id}/</code></p>
+    <p data-i18n="api.detail.body">Devuelve el mismo objeto que cada elemento de <code>results</code>. Si el <code>id</code> no existe o el juego no está aprobado, responde <code>404</code>.</p>
+    <pre class="code" tabindex="0" translate="no"><code>curl "https://makers-fangames-launcher.dpserver.es/api/v1/games/marea-roja/"</code></pre>
+
+    <h2 id="versiones" data-i18n="api.versions.title">Versiones de un juego</h2>
+    <p class="endpoint"><span class="method">GET</span> <code>/api/v1/games/{id}/versions/</code></p>
+    <p data-i18n="api.versions.body">Devuelve un array con todas las versiones públicas publicadas, demos incluidas, de la más reciente a la más antigua. No está paginado. Un juego sin versiones públicas devuelve <code>[]</code>.</p>
+    <pre class="code" tabindex="0" translate="no"><code>curl "https://makers-fangames-launcher.dpserver.es/api/v1/games/marea-roja/versions/"</code></pre>
+    <pre class="code" tabindex="0" translate="no"><code>[
+  {
+    "version": "0.7.2",
+    "status": "beta",
+    "published_at": "2026-11-02T09:15:44.120311+00:00",
+    "notes": "Corrige el bloqueo en la Ruta 4 y añade el tercer gimnasio.",
+    "platforms": ["windows", "linux", "android"]
+  },
+  {
+    "version": "0.1.0",
+    "status": "demo",
+    "published_at": "2026-05-20T16:03:10.882910+00:00",
+    "notes": "Primera demo pública.",
+    "platforms": ["windows"]
+  }
+]</code></pre>
+
+    <h2 id="esquema" data-i18n="api.schema.title">Esquema OpenAPI</h2>
+    <p class="endpoint"><span class="method">GET</span> <code>/api/v1/schema.json</code></p>
+    <p data-i18n="api.schema.body">Documento OpenAPI 3.0.3 con las rutas, los parámetros y los esquemas de respuesta. Úsalo para generar un cliente o validar respuestas.</p>
+    <pre class="code" tabindex="0" translate="no"><code>curl "https://makers-fangames-launcher.dpserver.es/api/v1/schema.json"</code></pre>
+
+    <h2 id="campos" data-i18n="api.fields.title">Campos</h2>
+    <h3 data-i18n="api.fields.game">Juego</h3>
+    <dl class="params">
+      <div><dt><code>id</code></dt><dd data-i18n="api.f.id">Identificador público del juego. Es el que va en la ruta.</dd></div>
+      <div><dt><code>title</code>, <code>description</code>, <code>short_description</code></dt><dd data-i18n="api.f.text">Textos del juego, sin enlaces pegados.</dd></div>
+      <div><dt><code>status</code></dt><dd data-i18n="api.f.status">Estado de la versión pública actual: <code>complete</code> (completo), <code>demo</code>, <code>beta</code> (en desarrollo) o <code>announced</code> (anunciado, sin versión pública). La versión actual es la más reciente que no es demo; si solo hay demos, la última demo.</dd></div>
+      <div><dt><code>development_state</code></dt><dd data-i18n="api.f.state"><code>active</code> (activo), <code>on_hold</code> (en pausa) o <code>abandoned</code> (abandonado). Un juego con versión completa pública es siempre <code>active</code>, aunque el maker haya marcado otro estado.</dd></div>
+      <div><dt><code>development_note</code></dt><dd data-i18n="api.f.note">Nota del maker sobre el estado. Vacía cuando el estado es <code>active</code>.</dd></div>
+      <div><dt><code>authors</code></dt><dd data-i18n="api.f.authors">Créditos públicos indicados por el maker, sin duplicados ni correos electrónicos. Puede estar vacío.</dd></div>
+      <div><dt><code>languages</code></dt><dd data-i18n="api.f.languages">Códigos de idioma ISO 639-1.</dd></div>
+      <div><dt><code>tags</code></dt><dd data-i18n="api.f.tags">Nombres de las etiquetas.</dd></div>
+      <div><dt><code>content_hours</code></dt><dd data-i18n="api.f.hours">Horas de contenido estimadas, o <code>null</code>.</dd></div>
+      <div><dt><code>wiki_url</code></dt><dd data-i18n="api.f.wiki">Enlace a la wiki del juego, o <code>null</code>. Nunca apunta a descargas.</dd></div>
+      <div><dt><code>adults_only</code></dt><dd data-i18n="api.f.adults">El juego está clasificado solo para mayores de 18. No oculta la portada ni las capturas.</dd></div>
+      <div><dt><code>cover_adults_only</code></dt><dd data-i18n="api.f.coverAdults">La portada tiene contenido explícito. Cuando es <code>true</code>, <code>cover_url</code> y <code>screenshots</code> no aparecen en la respuesta.</dd></div>
+      <div><dt><code>cover_url</code>, <code>screenshots</code></dt><dd data-i18n="api.f.media">URL absoluta de la portada (o <code>null</code>) y de las capturas aprobadas. Se omiten si <code>cover_adults_only</code> es <code>true</code>.</dd></div>
+      <div><dt><code>announced_milestone</code></dt><dd data-i18n="api.f.milestone">Hito que el maker anuncia para el juego (<code>demo</code>, <code>beta</code> o <code>complete</code>), o <code>null</code>.</dd></div>
+      <div><dt><code>planned_release_date</code></dt><dd data-i18n="api.f.planned">Fecha prevista en formato <code>AAAA-MM-DD</code>, o <code>null</code>.</dd></div>
+      <div><dt><code>latest_version</code></dt><dd data-i18n="api.f.latest">Número de la versión pública actual, o <code>null</code> si el juego está solo anunciado.</dd></div>
+      <div><dt><code>updated_at</code></dt><dd data-i18n="api.f.updated">Fecha del último cambio público del juego: ediciones de la ficha (por el maker o por administración), tags, idiomas, capturas, estado de desarrollo y publicación de una versión pública (demos incluidas). Nunca retrocede.</dd></div>
+    </dl>
+    <h3 data-i18n="api.fields.version">Versión</h3>
+    <dl class="params">
+      <div><dt><code>version</code></dt><dd data-i18n="api.v.version">Número de versión.</dd></div>
+      <div><dt><code>status</code></dt><dd data-i18n="api.v.status"><code>complete</code>, <code>demo</code> o <code>beta</code>.</dd></div>
+      <div><dt><code>published_at</code></dt><dd data-i18n="api.v.published">Fecha y hora de publicación, ISO 8601.</dd></div>
+      <div><dt><code>notes</code></dt><dd data-i18n="api.v.notes">Notas de la versión, sin enlaces pegados.</dd></div>
+      <div><dt><code>platforms</code></dt><dd data-i18n="api.v.platforms">Plataformas con una build aprobada, variantes de idioma incluidas: <code>windows</code>, <code>macos</code>, <code>linux</code> o <code>android</code>. <code>linux</code> indica una build nativa verificada; <code>android</code> solo aparece en instancias que ofrecen APK.</dd></div>
+    </dl>
+
+    <h2 id="limites" data-i18n="api.limits.title">Límites y buenas prácticas</h2>
+    <ul>
+      <li data-i18n="api.limits.rate"><strong>Límite de peticiones.</strong> 120 por IP y por minuto, contadas entre todas las rutas. Cada respuesta incluye <code>X-RateLimit-Limit</code>, <code>X-RateLimit-Remaining</code> y <code>X-RateLimit-Reset</code> (segundos Unix en que se reinicia el contador). Al superarlo responde <code>429</code> con <code>Retry-After</code> en segundos; espera ese tiempo antes de reintentar.</li>
+      <li data-i18n="api.limits.cache"><strong>Caché y revalidación.</strong> Las respuestas correctas llevan <code>Cache-Control: public, max-age=60</code>, <code>ETag</code> y, cuando procede, <code>Last-Modified</code>. Reenvía el <code>ETag</code> en <code>If-None-Match</code>: si no ha cambiado, la respuesta es <code>304</code> sin cuerpo. Una <code>304</code> también cuenta para el límite.</li>
+      <li data-i18n="api.limits.sync"><strong>Sincronización.</strong> Recorre el listado completo con <code>cursor</code> la primera vez y guarda la hora de inicio. En las siguientes ejecuciones pide solo <code>updated_since=&lt;esa hora&gt;</code>. Si quieres comprobar un juego concreto, <code>ETag</code> y <code>If-None-Match</code> te ahorran la descarga cuando no ha cambiado.</li>
+      <li data-i18n="api.limits.cors"><strong>CORS y métodos.</strong> Se aceptan <code>GET</code>, <code>HEAD</code> y <code>OPTIONS</code> desde cualquier origen (<code>Access-Control-Allow-Origin: *</code>). <code>HEAD</code> devuelve las cabeceras de <code>GET</code> sin cuerpo. Cualquier otro método responde <code>405</code> con <code>Allow</code>.</li>
+    </ul>
+    <pre class="code" tabindex="0" translate="no"><code>curl -i -H 'If-None-Match: "3f9a…c1d2"' "https://makers-fangames-launcher.dpserver.es/api/v1/games/marea-roja/"
+
+HTTP/1.1 304 Not Modified
+ETag: "3f9a…c1d2"
+Cache-Control: public, max-age=60
+X-RateLimit-Limit: 120
+X-RateLimit-Remaining: 117
+X-RateLimit-Reset: 1795283460</code></pre>
+
+    <h2 id="errores" data-i18n="api.errors.title">Errores</h2>
+    <p data-i18n="api.errors.body">Los errores devuelven JSON con esta forma y no se almacenan en caché.</p>
+    <pre class="code" tabindex="0" translate="no"><code>{"error": {"code": "invalid_query", "message": "Invalid development_state."}}</code></pre>
+    <dl class="params">
+      <div><dt><code>400 invalid_query</code></dt><dd data-i18n="api.e.400">Parámetro de consulta no válido o cursor alterado.</dd></div>
+      <div><dt><code>404 not_found</code></dt><dd data-i18n="api.e.404">El juego no existe, no está aprobado o la API está desactivada en la instancia.</dd></div>
+      <div><dt><code>405 method_not_allowed</code></dt><dd data-i18n="api.e.405">Método distinto de <code>GET</code>, <code>HEAD</code> u <code>OPTIONS</code>.</dd></div>
+      <div><dt><code>429 rate_limited</code></dt><dd data-i18n="api.e.429">Se superó el límite de peticiones. Consulta <code>Retry-After</code>.</dd></div>
+    </dl>
+    <p class="mute" data-i18n="api.errors.msg">Los mensajes (<code>message</code>) están en inglés; usa <code>code</code> para tu lógica.</p>
+  </section>
+</main>
+
+<footer>
+  <span>© Fangame Launcher</span>
+  <a href="https://github.com/Pokemon-Fan-Games/fangame-launcher-releases">GitHub</a>
+  <a href="changelog.html" data-lang-link="changelog.html" data-i18n="footer.changelog">Novedades</a>
+  <a href="index.html" data-lang-link="index.html" data-i18n="footer.home">Inicio</a>
+  <a href="privacy.html" data-lang-link="privacy.html" data-i18n="footer.privacy">Privacidad</a>
+</footer>
+<script src="i18n.js"></script>
+</body>
+</html>

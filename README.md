@@ -26,3 +26,7 @@ En **Steam Deck**, ejecútalo desde el modo Escritorio.
   ```
 
 Descarga únicamente los instaladores adjuntos a las Releases oficiales de este repositorio.
+
+## API pública
+
+El catálogo (juegos, versiones y estado de desarrollo) tiene una API de solo lectura en JSON. Documentación: <https://fangames-launcher.dpserver.es/api.html>
