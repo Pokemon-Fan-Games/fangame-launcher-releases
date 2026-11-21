@@ -37,6 +37,7 @@ code{font:var(--text-code)/var(--leading-code) var(--font-family-3);background:v
 .screen img{display:block;width:100%;height:auto}
 .screens .screen a{aspect-ratio:4/3}
 .screens .screen img{height:100%;object-fit:contain}
+.app-screens .screen a{aspect-ratio:16/9}
 /* Native window captures include a two-pixel black bottom edge. */
 .window-capture{clip-path:inset(0 0 .15% 0)}
 .screen a:hover{border-color:var(--color-primary)}
