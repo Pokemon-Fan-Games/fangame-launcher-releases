@@ -107,8 +107,9 @@ test('la página de privacidad ofrece el conmutador y el enlace de vuelta', () =
   assert.ok(privacy.includes('data-lang-link="index.html"'));
 });
 
-test('makers and downloads are announced as coming soon with no live links', () => {
-  assert.equal((html.match(/data-i18n="common.soon"/g) || []).length, 6);
+test('downloads are announced as coming soon with no live links', () => {
+  assert.equal((html.match(/data-i18n="common.soon"/g) || []).length, 5);
+  assert.match(html, /href="https:\/\/makers-fangames-launcher\.dpserver\.es"[^>]*data-i18n="makers\.cta"/);
   assert.doesNotMatch(html, /dpserver\.es\/portal|data-ext=|releases\/download/);
   assert.doesNotMatch(html, /href="https:\/\/github\.com\/[^"]+\/releases"/);
 });
