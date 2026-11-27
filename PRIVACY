@@ -1,6 +1,6 @@
 # Política de privacidad / Privacy Policy
 
-_Última actualización / Last updated: 2026-11-19_
+_Última actualización / Last updated: 2026-11-27_
 
 ## Español
 
@@ -18,13 +18,17 @@ _Última actualización / Last updated: 2026-11-19_
 Solo se envían si inicias sesión con una cuenta de jugador. Sin sesión, el launcher los guarda únicamente en tu equipo.
 
 - **Identificador del dispositivo.** El launcher genera al azar un identificador la primera vez que lo necesita y lo guarda en tu equipo. No se deriva de tu equipo ni de su hardware. Se envía junto al tiempo de juego, los logros y los juegos completados para distinguir tus dispositivos.
-- **Tiempo de juego.** En escritorio, cuando juegas a un juego del catálogo, el launcher envía el juego, la hora de inicio y los segundos jugados. El servidor también registra cuándo empieza y termina cada sesión para medir el tiempo por su cuenta. Se usa para mostrarte tu tiempo total en todos tus dispositivos, para permitir puntuar un juego después de 30 minutos de juego y para verificar los logros.
+- **Tiempo de juego.** En escritorio, cuando juegas a un juego del catálogo, el launcher envía el juego, la hora de inicio, los segundos jugados y, a partir de la versión del launcher que incluye esta función, la versión instalada del juego. El servidor también registra cuándo empieza y termina cada sesión para medir el tiempo por su cuenta. Se usa para mostrarte tu tiempo total en todos tus dispositivos, para permitir puntuar un juego después de 30 minutos de juego, para verificar los logros y para las estadísticas agregadas del maker.
 - **Logros.** Los juegos compatibles anotan los logros en un archivo dentro de su carpeta de partidas. En escritorio y Android, el launcher lee ese archivo y envía el juego, el identificador de cada logro, su progreso, la hora anotada por el juego y un código aleatorio por evento. El servidor guarda qué logros tienes, cuándo los desbloqueaste y tu progreso. Para detectar trampas, marca como no verificados los logros con señales como una fecha futura, una fecha anterior a la creación de la cuenta, muchos logros a la vez, falta de tiempo de juego, un desbloqueo fuera de una sesión de juego o el mismo evento en otra cuenta. Un logro no verificado no cuenta para la rareza. El dueño de cada juego en el portal ve los logros no verificados de su juego, con el nombre de usuario de la cuenta y los motivos, y puede revocarlos o reiniciar los logros de esa cuenta en su juego. El equipo de moderación también puede hacerlo, y esas acciones quedan registradas. La rareza de cada logro se muestra solo como porcentaje de las cuentas con actividad en el juego, sin nombres, y únicamente cuando hay al menos 10.
-- **Juegos completados.** Cuando un juego compatible indica que lo terminaste, el launcher envía la fecha, el tiempo de juego que indica la partida, si lo hay, y si lo detectó la partida o el launcher. Se guarda solo la primera vez por juego.
-- **Puntuaciones.** Si puntúas un juego, se guarda una puntuación por cuenta y juego, que puedes cambiar o borrar. Públicamente solo se muestran la media y el número de votos.
+- **Juegos completados.** Cuando un juego compatible indica que lo terminaste, el launcher envía la fecha, el tiempo de juego que indica la partida, si lo hay, y si lo detectó la partida o el launcher. Se guarda solo la primera vez por juego. Estas partidas terminadas también se usan en las estadísticas agregadas del maker.
+- **Puntuaciones.** Si puntúas un juego, se guarda una puntuación por cuenta y juego, que puedes cambiar o borrar. Públicamente solo se muestran la media y el número de votos. Las notas también se usan en las estadísticas agregadas del maker.
 - **Carpetas de la biblioteca.** Los nombres de tus carpetas, si son favoritas y qué juegos contienen se guardan en tu cuenta para verlas igual en tus otros dispositivos.
 
 Salvo lo que ve el dueño de un juego sobre los logros no verificados de ese juego, ninguno de estos datos se muestra públicamente con tu nombre de usuario.
+
+### Estadísticas para makers
+
+El maker de un juego y los miembros de su equipo en el portal ven estadísticas agregadas y anónimas de ese juego: jugadores con tiempo de juego, horas totales y mediana, porcentaje que lo termina, nota media y reparto, jugadores, horas y partidas terminadas por versión, y gráficos semanales de los últimos 90 días con descargas, jugadores activos y horas. Las descargas siguen siendo anónimas, como antes. Nunca se muestran nombres, cuentas ni datos de un jugador concreto. Cada cifra basada en jugadores se oculta si hay menos de 5 jugadores detrás, y lo mismo ocurre con cada semana y con cada versión. El tiempo de juego, las partidas terminadas y las notas solo existen para jugadores con cuenta, y el tiempo de juego se mide en el launcher de escritorio.
 
 ### En Android
 
@@ -72,13 +76,17 @@ Para consultas sobre privacidad: fangameslauncher@gmail.com
 This data is sent only if you sign in with a player account. Without a session, the launcher keeps it on your device only.
 
 - **Device identifier.** The launcher generates a random identifier the first time it needs one and stores it on your device. It is not derived from your device or its hardware. It is sent with playtime, achievements and completed games to tell your devices apart.
-- **Playtime.** On desktop, when you play a catalogue game, the launcher sends the game, the start time and the seconds played. The server also records when each session starts and ends to measure the time itself. It is used to show your total time across your devices, to allow rating a game after 30 minutes of play and to verify achievements.
+- **Playtime.** On desktop, when you play a catalogue game, the launcher sends the game, the start time, the seconds played and, from the launcher version that includes this feature, the installed version of the game. The server also records when each session starts and ends to measure the time itself. It is used to show your total time across your devices, to allow rating a game after 30 minutes of play, to verify achievements and for the aggregated statistics for makers.
 - **Achievements.** Compatible games record achievements in a file inside their save folder. On desktop and Android, the launcher reads that file and sends the game, each achievement's identifier, its progress, the time recorded by the game and a random code per event. The server stores which achievements you have, when you unlocked them and your progress. To detect cheating, it marks as unverified the achievements that show signals such as a future date, a date before the account was created, many achievements at once, no playtime, an unlock outside a play session or the same event on another account. An unverified achievement does not count towards rarity. The owner of each game on the portal sees the unverified achievements of their game, with the account's username and the reasons, and can revoke them or reset that account's achievements in their game. The moderation team can do the same, and those actions are logged. Each achievement's rarity is shown only as a percentage of the accounts with activity in the game, without names, and only when there are at least 10.
-- **Completed games.** When a compatible game reports that you finished it, the launcher sends the date, the playtime reported by the save if there is one, and whether the save or the launcher detected it. Only the first time per game is stored.
-- **Ratings.** If you rate a game, one rating per account and game is stored; you can change or delete it. Only the average and the number of votes are shown publicly.
+- **Completed games.** When a compatible game reports that you finished it, the launcher sends the date, the playtime reported by the save if there is one, and whether the save or the launcher detected it. Only the first time per game is stored. Completed playthroughs are also used in the aggregated statistics for makers.
+- **Ratings.** If you rate a game, one rating per account and game is stored; you can change or delete it. Only the average and the number of votes are shown publicly. Ratings are also used in the aggregated statistics for makers.
 - **Library folders.** Your folder names, whether they are favourites and which games they contain are stored in your account so they look the same on your other devices.
 
 Apart from what a game's owner sees about the unverified achievements of that game, none of this data is shown publicly with your username.
+
+### Statistics for makers
+
+The maker of a game and the members of their team in the portal see aggregated, anonymous statistics for that game: players with playtime, total and median hours, the percentage who finish it, average rating and its distribution, players, hours and completed playthroughs by version, and weekly charts for the last 90 days with downloads, active players and hours. Downloads remain anonymous, as before. Names, accounts and data about any individual player are never shown. Each player-based figure is hidden when fewer than 5 players are behind it, and the same applies to each week and each version. Playtime, completed playthroughs and ratings exist only for players with an account, and playtime is measured in the desktop launcher.
 
 ### On Android
 
